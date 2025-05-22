@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+
+    <!-- 페이지 스타일 정의 -->
+    <style>
+        /* 기본 body 스타일 */
+        body {
+            font-family: Arial, sans-serif;  /* 기본 폰트 설정 */
+            padding: 20px;  /* 페이지에 여백을 줌 */
+        }
+
+        /* 상세 정보 컨테이너 스타일 */
+        .detail-container {
+            border: 2px solid black;  /* 외곽선 설정 */
+            padding: 20px;  /* 내부 여백 */
+            width: fit-content;  /* 내용에 맞춰 너비 설정 */
+            margin: 0 auto;  /* 화면 중앙 정렬 */
+            background-color: #f9f9f9;  /* 배경색 설정 */
+        }
+
+        /* 이미지 스타일 */
+        .detail-container img {
+            border-radius: 50%;  /* 이미지 테두리를 원형으로 설정 */
+            width: 120px;  /* 이미지 크기 설정 */
+            height: 120px;  /* 이미지 크기 설정 */
+            object-fit: cover;  /* 비율을 유지하며 이미지를 꽉 채움 */
+        }
+
+        /* 제목 스타일 */
+        .detail-container h2 {
+            text-align: center;  /* 제목을 화면 가운데 정렬 */
+        }
+
+        /* 연락처 정보 스타일 */
+        .contact-info {
+            margin: 20px 0;  /* 위아래 여백 추가 */
+            font-size: 1.2em;  /* 글자 크기 약간 크게 설정 */
+        }
+
+        /* 버튼 스타일 */
+        .buttons {
+            text-align: center;  /* 버튼을 화면 가운데 정렬 */
+            margin-top: 20px;  /* 버튼과 정보 사이의 여백 추가 */
+        }
+
+        /* 버튼 기본 스타일 */
+        .buttons button {
+            padding: 10px 20px;  /* 버튼의 패딩(내부 여백) 설정 */
+            margin: 0 10px;  /* 버튼 사이 여백 설정 */
+            font-size: 1em;  /* 버튼 글자 크기 설정 */
+            cursor: pointer;  /* 마우스 포인터를 클릭 가능한 모양으로 설정 */
+        }
+
+        /* 수정 버튼 스타일 */
+        .buttons .edit-btn {
+            background-color: #4CAF50;  /* 초록색 배경 */
+            color: white;  /* 글자 색을 흰색으로 설정 */
+        }
+
+        /* 삭제 버튼 스타일 */
+        .buttons .delete-btn {
+            background-color: #f44336;  /* 빨간색 배경 */
+            color: white;  /* 글자 색을 흰색으로 설정 */
+        }
+        .home-button {
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        border: none;
+            border-radius: 5px;
+    }
+    .header-container {
+            display: flex;
+            justify-content: space-between;  /* 양쪽 끝으로 배치 */
+            align-items: center;             /* 세로 중앙 정렬 */
+            margin-bottom: 20px;             /* 두 영역 사이에 여백 */
+        }
+
+
+    </style>
+</head>
+<body>
+   
+
+    <!-- 상세 정보가 들어갈 컨테이너 -->
+    <div class="detail-container">
+         <!-- 홈 버튼 추가 -->
+         <div class="header-container">
+            <button class="home-button" onclick="window.location.href='PhoneBookMain.html'">홈</button>
+            <h2>PhoneBook</h2></div>
+
+        <!-- 연락처 상세 정보가 들어갈 공간 -->
+        <div id="contact-detail">
+            <!-- JavaScript를 통해 이곳에 연락처 정보를 삽입 -->
+        </div>
+
+        <!-- 수정 및 삭제 버튼들 -->
+        <div class="buttons">
+            <!-- 수정 버튼 클릭 시 동작하는 함수 -->
+            <button class="edit-btn" onclick="editContact()">수정</button>
+            <!-- 삭제 버튼 클릭 시 동작하는 함수 -->
+            <button class="delete-btn" onclick="deleteContact()">삭제</button>
+        </div>
+    </div>
+
+    <script>
+        // 연락처 데이터 배열 
+        const data = [
+        {"id":"1", "pic": "Marvin.png", "name": "Marvin McKinney", "hp": "(480) 555-0103","email" :"tim.jennings@example.com" },
+            { "id":"2","pic": "Eleanor.png", "name": "Eleanor Pena", "hp": "(209) 555-0104","email" :"Eleanor.123@example.com"  },
+            {"id":"3", "pic": "Guy.png", "name": "Guy Hawkins", "hp": "(307) 555-0133","email" :"Strongmarvi@example.com"  },
+            { "id":"4","pic": "Esther.png", "name": "Esther Howard", "hp": "(239) 555-0108","email" :"Esther123@example.com"  },
+            { "id":"5","pic": "Kathryn.png", "name": "Kathryn Murphy", "hp": "(225) 555-0118","email" :"Kathrn123@example.com"  },
+            { "id":"6","pic": "Ralph.png", "name": "Ralph Edwards", "hp": "(808) 555-0111","email" :"bill.sanders@example.com"  }
+        ];
+
+        // URL에서 id 파라미터를 가져오기
+        const params = new URLSearchParams(window.location.search);  // 현재 URL에서 쿼리 문자열을 파싱
+        const id = params.get("id");  // id 파라미터 값 가져오기
+
+        // 해당 id를 가진 연락처를 데이터 배열에서 찾기
+        const person = data.find(p => p.id === id);  // id가 일치하는 사람을 찾아 반환
+
+        // 만약 해당 연락처가 존재한다면
+        if (person) {
+            // 연락처 정보를 화면에 삽입
+            const contactDetailDiv = document.getElementById("contact-detail");  // 연락처 정보를 넣을 div 요소 찾기
+            contactDetailDiv.innerHTML = `  <!-- 연락처 상세 정보 HTML 삽입 -->
+                <div style="text-align: center;">
+                    <img src="${person.pic}" alt="${person.name}">  <!-- 사람의 프로필 이미지 -->
+                </div>
+                <div class="contact-info">
+                    <strong>이름<br></strong> ${person.name} <p/>  
+                    <strong>전화번호<br></strong> ${person.hp}  <p/>
+                    <strong>이메일<br></strong> ${person.email}  
+                </div>
+            `;
+        } else {
+            // 만약 해당 id의 사람이 없다면
+            document.getElementById("contact-detail").innerHTML = "<p>존재하지 않는 연락처입니다.</p>";  // 에러 메시지 출력
+        }
+
+        // 수정 버튼 클릭 시 동작하는 함수
+        function editContact() {
+            // 이제 해야함
+        }
+
+        // 삭제 버튼 클릭 시 동작하는 함수
+        function deleteContact() {
+            // 사용자가 삭제 확인을 했을 때
+            if (confirm("정말 삭제하시겠습니까?")) {
+                // 이제 구현해야함
+            }
+        }
+    </script>
+</body>
+</html>
