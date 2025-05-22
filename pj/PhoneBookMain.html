@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 모바일 대응을 위한 뷰포트 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Book</title>
+
+    <!-- ✅ 스타일 정의 -->
+    <style>
+        /* 전체 페이지 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* 제목 가운데 정렬 */
+        h3 {
+            text-align: center;
+        }
+
+        /* 연락처 전체를 감싸는 큰 사각형 박스 */
+        .container {
+            border: 2px solid black;       /* 외곽선 */
+            padding: 20px;                 /* 내부 여백 */
+            width: fit-content;            /* 내용 크기에 맞게 너비 자동 조절 */
+            margin: 0 auto;                /* 가운데 정렬 */
+            background-color: #f9f9f9;     /* 약간의 배경색 */
+        }
+
+        /* 개별 연락처 항목 */
+        .contact {
+            display: flex;                 /* 이미지와 텍스트를 가로 정렬 */
+            align-items: center;           /* 세로 중앙 정렬 */
+            border-bottom: 1px solid #ccc; /* 항목 사이 구분선 */
+            padding: 10px 0;               /* 위아래 여백 */
+            gap: 15px;                     /* 이미지와 텍스트 사이 간격 */
+        }
+
+        /* 마지막 항목에는 밑줄 제거 */
+        .contact:last-child {
+            border-bottom: none;
+        }
+
+        /* 프로필 이미지 스타일 */
+        img {
+            border: 1px solid skyblue;     /* 이미지 테두리 */
+            border-radius: 50%;            /* 원형 이미지 만들기 */
+            width: 80px;
+            height: 80px;
+            object-fit: cover;             /* 이미지 비율 유지하며 꽉 채우기 */
+        }
+
+        /* 연락처 정보 (이름/전화번호) 목록 스타일 */
+        ul {
+            list-style: none;              /* 불릿 제거 */
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;                 /* 위아래 여백 */
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- ✅ 연락처 항목들을 담는 컨테이너 -->
+    <div class="container">
+    <h3>PHONE BOOK</h3></div>
+    
+
+    <!-- ✅ JavaScript로 데이터 삽입 -->
+    <script>
+        // 연락처 데이터 배열 (보통은 외부 JSON 파일에서 가져옴)
+        const data = [
+        {"id":"1", "pic": "Marvin.png", "name": "Marvin McKinney", "hp": "(480) 555-0103","email" :"tim.jennings@example.com" },
+            { "id":"2","pic": "Eleanor.png", "name": "Eleanor Pena", "hp": "(209) 555-0104","email" :"Eleanor.123@example.com"  },
+            {"id":"3", "pic": "Guy.png", "name": "Guy Hawkins", "hp": "(307) 555-0133","email" :"Strongmarvi@example.com"  },
+            { "id":"4","pic": "Esther.png", "name": "Esther Howard", "hp": "(239) 555-0108","email" :"Esther123@example.com"  },
+            { "id":"5","pic": "Kathryn.png", "name": "Kathryn Murphy", "hp": "(225) 555-0118","email" :"Kathrn123@example.com"  },
+            { "id":"6","pic": "Ralph.png", "name": "Ralph Edwards", "hp": "(808) 555-0111","email" :"bill.sanders@example.com"  }
+        ];
+
+        // 연락처 항목을 삽입할 DOM 요소 선택 (.container)
+        const container = document.querySelector(".container");
+
+        // 연락처 데이터 배열을 순회하면서 각 항목을 HTML로 생성하여 삽입
+        data.forEach(obj => {
+            // 템플릿 문자열로 연락처 항목 생성
+            const contactHTML = `
+                <div class="contact">
+                    
+                    <!-- 이미지를 클릭하면 detail.html?id=해당 id 로 이동 -->
+            <a href="detail.html?id=${obj.id}">
+                <img src="${obj.pic}" alt="${obj.name}">
+            </a>
+
+                    <!-- 이름과 전화번호 목록 -->
+                    <ul>
+                        <li><strong></strong> ${obj.name}</li>
+                        <li><strong></strong> ${obj.hp}</li>
+                    </ul>
+                </div>
+            `;
+
+            // 생성된 HTML을 .container 내부에 추가
+            container.innerHTML += contactHTML;
+        });
+    </script>
+</body>
+</html>
