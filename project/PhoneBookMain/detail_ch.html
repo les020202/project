@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+
+    <!-- 페이지 스타일 정의 -->
+    
+<script defer src="PhoneBookMain.js"></script><script defer src="detail.js"></script><script defer src="detail_ch.js"></script><link href="PhoneBookMain.css" rel="stylesheet"><link href="detail.css" rel="stylesheet"><link href="detail_ch.css" rel="stylesheet"></head>
+<body>
+   
+
+    <!-- 상세 정보가 들어갈 컨테이너 -->
+    <div class="detail-container">
+         <!-- 홈 버튼 추가 -->
+         <div class="header-container">
+            <button class="home-button" onclick="window.location.href='PhoneBookMain.html'">홈</button>
+            <h2>PhoneBook</h2></div>
+
+        <!-- 연락처 상세 정보가 들어갈 공간 -->
+        <div id="contact-detail">
+            <!-- JavaScript를 통해 이곳에 연락처 정보를 삽입 -->
+        </div>
+
+        <!-- 수정 및 삭제 버튼들 -->
+        <div class="buttons">
+            <!-- 수정 버튼 클릭 시 동작하는 함수 -->
+            <button class="edit-btn" onclick="editContact()">확인</button>
+            <!-- 삭제 버튼 클릭 시 동작하는 함수 -->
+            <button class="delete-btn" onclick="deleteContact()">취소</button>
+        </div>
+    </div>
+
+    
+</body>
+</html>
