@@ -12,7 +12,7 @@ import './detail.css';
         // URL에서 id 파라미터를 가져오기
         const params = new URLSearchParams(window.location.search);  // 현재 URL에서 쿼리 문자열을 파싱
         const id = params.get("id");  // id 파라미터 값 가져오기
-
+     
         // 해당 id를 가진 연락처를 데이터 배열에서 찾기
         const person = data.find(p => p.id === id);  // id가 일치하는 사람을 찾아 반환
 
@@ -34,8 +34,6 @@ import './detail.css';
             // 만약 해당 id의 사람이 없다면
             document.getElementById("contact-detail").innerHTML = "<p>존재하지 않는 연락처입니다.</p>";  // 에러 메시지 출력
         }
-
-        // 수정 버튼 클릭 시 동작하는 함수
         function editContact() {
             // 이제 해야함
         }

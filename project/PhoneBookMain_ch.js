@@ -1,4 +1,4 @@
-import './PhoneBookMain.css'
+import './PhoneBookMain_ch.css'
 
 
         // 연락처 데이터 배열 (보통은 외부 JSON 파일에서 가져옴)
@@ -8,11 +8,11 @@ import './PhoneBookMain.css'
             {"id":"3", "pic": "Guy.png", "name": "Guy Hawkins", "hp": "(307) 555-0133","email" :"Strongmarvi@example.com"  },
             { "id":"4","pic": "Esther.png", "name": "Esther Howard", "hp": "(239) 555-0108","email" :"Esther123@example.com"  },
             { "id":"5","pic": "Kathryn.png", "name": "Kathryn Murphy", "hp": "(225) 555-0118","email" :"Kathrn123@example.com"  },
-            { "id":"6","pic": "Ralph.png", "name": "Ralph Edwards", "hp": "(808) 555-0111","email" :"bill.sanders@example.com"  }
+            { "id":"6","pic": "Ralph.png", "name": "Ralgo hover", "hp": "(808) 555-0111","email" :"bill.sanders@example.com"  }
         ];
 
         // 연락처 항목을 삽입할 DOM 요소 선택 (.container)
-        const container = document.querySelector(".container");
+        const container = document.querySelector(".container2");
 
         // 연락처 데이터 배열을 순회하면서 각 항목을 HTML로 생성하여 삽입
         data.forEach(obj => {
@@ -20,8 +20,8 @@ import './PhoneBookMain.css'
             const contactHTML = `
                 <div class="contact">
                     
-                    <!-- 이미지를 클릭하면 detail.html?id=해당 id 로 이동 -->
-            <a href="detail.html?id=${obj.id}">
+                    <!-- 이미지를 클릭하면 detail2.html?id=해당 id 로 이동 -->
+            <a href="detail2.html?id=${obj.id}">
                 <img src="${obj.pic}" alt="${obj.name}">
             </a>
 

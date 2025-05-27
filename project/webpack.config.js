@@ -10,6 +10,8 @@ module.exports={
         PhoneBookMain:"./PhoneBookMain.js",
         detail:"./detail.js",
         detail_ch:"./detail_ch.js",
+        detail2:"./detail2.js",
+        PhoneBookMain_ch:"./PhoneBookMain_ch.js",
     }, 
 
     output:{
@@ -30,7 +32,7 @@ module.exports={
         new HtmlWebpackPlugin({
             template:'./PhoneBookMain.html',
             filename:'PhoneBookMain.html',
-            Chunks:['PhoneBookMain','detail']
+            Chunks:['PhoneBookMain','detail','detail_ch','PhoneBookMain_ch']
         }),
         new HtmlWebpackPlugin({
             template:'./detail.html',
@@ -41,6 +43,16 @@ module.exports={
             template:'./detail_ch.html',
             filename:'detail_ch.html',
             Chunks:['detail_ch']
+        }),
+        new HtmlWebpackPlugin({
+            template:'./detail2.html',
+            filename:'detail2.html',
+            Chunks:['detail2']
+        }),
+        new HtmlWebpackPlugin({
+            template:'./PhoneBookMain_ch.html',
+            filename:'PhoneBookMain_ch.html',
+            Chunks:['PhoneBookMain_ch']
         }),
         new MiniCssExtractPlugin(),
     ]
