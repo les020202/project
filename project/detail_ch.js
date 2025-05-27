@@ -35,10 +35,7 @@ import './detail_ch.css';
             document.getElementById("contact-detail").innerHTML = "<p>존재하지 않는 연락처입니다.</p>";  // 에러 메시지 출력
         }
 
-        // 확인 버튼 클릭 시 동작하는 함수
-        function editContact() {
-            // 이제 해야함
-        }
+        
 
         // 삭제 버튼 클릭 시 동작하는 함수
         function deleteContact() {
