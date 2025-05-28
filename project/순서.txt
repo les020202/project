@@ -1,0 +1,9 @@
+전체(PhoneBookmain) -> 상세(detail) -> 수정(detail_ch) -> 수정된 상세(detail2)  ->수정된 전체(PhoneBookmain_ch)
+
+-> 수정된 상세(detail2)-> 삭제
+->(삭제 물어봄)  
+	-yes? -> 삭제된 전체(PhoneBookmain_de)
+	-no? -> (삭제 물어봄) 취소
+
+--------
+Ralgo hover

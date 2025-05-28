@@ -36,11 +36,8 @@ import './detail2.css';
         }
         
 
-        // 삭제 버튼 클릭 시 동작하는 함수
-        function deleteContact() {
-            // 사용자가 삭제 확인을 했을 때
+        window.deleteContact = function () {
             if (confirm("정말 삭제하시겠습니까?")) {
-                // 이제 구현해야함
+              window.location.href = 'PhoneBookMain_de.html';
             }
-        }
-   
+          };
