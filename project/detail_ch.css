@@ -28,7 +28,7 @@
         }
 
         /* 연락처 정보 스타일 */
-        .contact-info {
+        .contact-info_ch {
             margin: 20px 0;  /* 위아래 여백 추가 */
             font-size: 1.2em;  /* 글자 크기 약간 크게 설정 */
         }

@@ -18,21 +18,48 @@ import './detail_ch.css';
         
         // 만약 해당 연락처가 존재한다면
         if (person) {
-            // 연락처 정보를 화면에 삽입
-            const contactDetailDiv = document.getElementById("contact-detail");  // 연락처 정보를 넣을 div 요소 찾기
-            contactDetailDiv.innerHTML = `  <!-- 연락처 상세 정보 HTML 삽입 -->
+            const contactDetailDiv = document.getElementById("contact-detail_ch");
+            contactDetailDiv.innerHTML = `
                 <div style="text-align: center;">
-                    <img src="${person.pic}" alt="${person.name}">  <!-- 사람의 프로필 이미지 -->
+                    <img src="${person.pic}" alt="${person.name}">
                 </div>
-                <div class="contact-info">
-                    <strong>이름<br></strong> ${person.name} <p/>  
-                    <strong>전화번호<br></strong> ${person.hp}  <p/>
-                    <strong>이메일<br></strong> ${person.email}  
+                <div class="contact-info_ch">
+                    <strong>이름<br></strong> 
+                    <span id="person-name">${person.name}</span>
+                    <input type="text" id="name-input" value="${person.name}" style="display:none;" />
+                    <button id="edit-name-btn">수정</button><p/>
+                    
+                    <strong>전화번호<br></strong> ${person.hp} <p/>
+                    <strong>이메일<br></strong> ${person.email}
                 </div>
             `;
+        
+            const nameSpan = document.getElementById("person-name");
+            const nameInput = document.getElementById("name-input");
+            const editButton = document.getElementById("edit-name-btn");
+        
+            editButton.addEventListener("click", () => {
+                if (editButton.textContent === "수정") {
+                    // 수정 모드로 전환
+                    nameSpan.style.display = "none";
+                    nameInput.style.display = "inline-block";
+                    editButton.textContent = "저장";
+                    nameInput.focus();
+                } else {
+                    // 저장 모드: 이름 적용
+                    const newName = nameInput.value.trim();
+                    if (newName !== "") {
+                        person.name = newName;
+                        nameSpan.textContent = newName;
+                    }
+                    nameSpan.style.display = "inline";
+                    nameInput.style.display = "none";
+                    editButton.textContent = "수정";
+                }
+            });
         } else {
             // 만약 해당 id의 사람이 없다면
-            document.getElementById("contact-detail").innerHTML = "<p>존재하지 않는 연락처입니다.</p>";  // 에러 메시지 출력
+            document.getElementById("contact-detail_ch").innerHTML = "<p>존재하지 않는 연락처입니다.</p>";  // 에러 메시지 출력
         }
 
         
